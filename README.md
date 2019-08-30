@@ -8,7 +8,7 @@ Sparkify, a music streaming startup, is looking for a data engineer to create a 
 
 The objective of this project is to ingest the data provided by Sparkify and design a method of storage using a relational data model in Postgres.
 
-### Relational Model Resoning
+### Relational Model Reasoning
 * The data types are structured (we know before-hand the sctructure of the jsons we need to analyze, and where and how to extract and transform each field)
 * Ability to use SQL is necesary to gain insights from the data we store.
 * As of the present, the size of the data is not big enough to justify a NoSQL solution.
@@ -39,58 +39,23 @@ This project implements a star schema.  `songplays` is the fact table in the dat
 
 ### Fact Table
 `songplays` - records in log data associated with page = "NextSong".
-|Attribute|Type|Description|
-|---|---|---|
-|songplay_id| SERIAL PK NOT NULL|ID of a song play|
-|start_time| TIMESTAMP |Timestamp of beginning user activity|
-|user_id| INTEGER| ID of user|
-|level| VARCHAR|: User level (free or paid)|
-|song_id| VARCHAR|ID of song played|
-|artist_id| VARCHAR|artist ID of the song played|
-|session_id| INTEGER|user session ID|
-|location| VARCHAR|User location|
-|user_agent| VARCHAR|User agent|
+* `songplay_id`, `user_id`, `level`, `song_id`, `artist_id`, `session_id`, `location`, `user_agent`
 
 ### Dimension Tables
 `users` - collection of app users.
-|Attribute|Type|Description|
-|---|---|---|
-|user_id| INTEGER PK| ID of user|
-|first_name| VARCHAR| Name of user|
-|last_name| VARCHAR| Last Name of user|
-|gender| VARCHAR|Gender of user|
-|level| VARCHAR|User level (free or paid)|
+* `user_id`, `first_name`, `last_name`, `gender`, `level`
 
 `songs` - collection of songs.
-|Attribute|Type|Description|
-|---|---|---|
-|song_id| VARCHAR PK| song ID|
-|title| VARCHAR|song title|
-|artist_id|VARCHAR|artist ID|
-|year|INTEGER|release year|
-|duration|FLOAT|song duration (in milliseconds)|
+* `song_id`, `title`, `artist_id`, `year`, `duration`
 
 
 `artists` - information about artists.
-|Attribute|Type|Description|
-|---|---|---|
-|artist_id|VARCHAR PK|artist ID|
-|artist_name|VARCHAR|artist_name|
-|artist_location|VARCHAR|Name of artist city|
-|artist_lattitude|FLOAT|Lattitude location of artist|
-|artist_longitude|FLOAT|Longitude location of artist|
+* `artist_id`, `artist_name`, `artist_location`, `artist_latitude`, `artisit_longitude`
 
 
 `time` - timestamps of records in songplays deconstructed into various date-time parts.
-|Attribute|Type|Description|
-|---|---|---|
-|start_time|TIMESTAMP PK|Timestamp of row|
-|hour|INTEGER|Hour associated with start_time|
-|day|INTEGER|: Day associated with start_time|
-|week|INTEGER|: Week of year associated with start_time|
-|month|INTEGER|: Month associated with start_time|
-|year|INTEGER|: Year associated with start_time|
-|weekday| INTEGER|: Name of week day associated with start_time|
+* `start_time`, `hour`, `day`, `week`, `month`, `year`, `weekday`
+
 ___
 ## Repository Structure
 * `data` folder - includes `song_data` and `log_data`; raw jason files provided by Sparkify.
